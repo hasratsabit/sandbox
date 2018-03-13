@@ -9,7 +9,13 @@ var server = new WebpackDevServer(compiler, {
 	filename: config.output.filename,
 	publicPath: config.output.publicPath,
 	stats: {
-		colors: true
+		colors: true,
+		chunks: false,
+		assets: false,
+		timings: false,
+		modules: false,
+		hash: false,
+		version: false
 	}
 });
-server.listen(8080, 'localhost', function() {});
+server.listen(4200, 'localhost', function() {});

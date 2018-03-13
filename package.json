@@ -1,13 +1,12 @@
 {
-  "name": "webpack-tutorial-uppsalajs",
+  "name": "sandbox",
   "version": "1.0.0",
-  "description": "This repo contains what was demonstrated on Uppsala.js, November 3, 2016.",
+  "description": "It is a sandbox repo",
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && NODE_ENV=production webpack",
     "dev": "NODE_ENV=development node dev-server.js"
   },
-  "keywords": ["webpack", "tutorial", "uppsalajs", "meetup"],
   "author": "Emil Oberg",
   "license": "ISC",
   "devDependencies": {
@@ -19,7 +18,9 @@
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
+    "node-sass": "^4.7.2",
     "rimraf": "^2.5.4",
+    "sass-loader": "^6.0.7",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.25",

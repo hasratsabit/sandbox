@@ -8,12 +8,12 @@ const PRODUCTION = process.env.NODE_ENV === 'production';
 
 const entry = PRODUCTION
 	?	[
-			'./src/index.js'
+			'./src/js/index.js'
 		]
 	:	[
-			'./src/index.js',
+			'./src/js/index.js',
 			'webpack/hot/dev-server',
-			'webpack-dev-server/client?http://localhost:8080'
+			'webpack-dev-server/client?http://localhost:4200'
 		];
 
 const plugins = PRODUCTION
@@ -39,9 +39,9 @@ const cssIdentifier = PRODUCTION ? '[hash:base64:10]' : '[path][name]---[local]'
 
 const cssLoader = PRODUCTION
 	?	ExtractTextPlugin.extract({
-			loader: 'css-loader?minimize&localIdentName=' + cssIdentifier
+			loader: ['css-loader', 'sass-loader?minimize&localIdentName=' + cssIdentifier]
 		})
-	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier];
+	: 	['style-loader', 'css-loader', 'sass-loader?localIdentName=' + cssIdentifier];
 
 module.exports = {
 	devtool: 'source-map',
@@ -63,11 +63,16 @@ module.exports = {
 			test: /\.css$/,
 			loaders: cssLoader,
 			exclude: /node_modules/
+		},
+		{
+			test: /\.scss$/,
+			loaders: cssLoader,
+			exclude: /node_modules/
 		}]
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
-		publicPath: PRODUCTION ? '/' : '/dist/',
+		publicPath: PRODUCTION ? '' : '/dist/',
 		filename: PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js'
 	}
 };
